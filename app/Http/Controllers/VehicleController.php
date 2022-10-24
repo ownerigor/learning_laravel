@@ -41,9 +41,9 @@ class VehicleController extends Controller
     public function store(Request $request)
     {
         //..do the validation
-        //$request->validate($this->getRules(),
-        //    $this -> getRulesMessages()
-        //);
+        $request->validate($this->getRules(),
+            $this -> getRulesMessages()
+        );
         
         //dd($request);
         $vehicle = new Vehicle();
@@ -97,6 +97,10 @@ class VehicleController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate($this->getRules(),
+            $this -> getRulesMessages()
+        );        
+
         //find the vehicle to update
         $v = Vehicle::find($id);
         //..update the values
