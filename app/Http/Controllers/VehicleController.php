@@ -41,7 +41,9 @@ class VehicleController extends Controller
     public function store(Request $request)
     {
         //..do the validation
-        $request->validate($this->getRules());
+        //$request->validate($this->getRules(),
+        //    $this -> getRulesMessages()
+        //);
         
         //dd($request);
         $vehicle = new Vehicle();
@@ -132,5 +134,15 @@ class VehicleController extends Controller
         ];
         return $rules;
     }
+
+        //..get the validation error messages
+        public function getRulesMessages() {
+            $msg = [ 
+                'name.*' => 'Digite um nome com até 50 caracteres.',
+                'year.*' => 'Digite um ano com 4 digitos.',
+                'color.*' => 'Digite uma cor com até 30 caracteres.'
+            ];
+            return $msg;
+        }
 
 }
